@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTA VI Countdown — GTA Updates Hub</title>
+<style>
+  :root{
+    --ink: #0e1210;
+    --paper: #f2ede1;
+    --neon-pink: #ff2e7e;
+    --neon-teal: #17e0c3;
+    --dusk-purple: #5b3d8f;
+    --gold: #f4b942;
+    --line: rgba(242,237,225,0.18);
+  }
+
+  *{box-sizing:border-box;}
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(91,61,143,0.55), transparent 60%),
+      radial-gradient(900px 500px at 90% 10%, rgba(255,46,126,0.25), transparent 55%),
+      linear-gradient(180deg, #0a0d0c 0%, #0e1210 60%, #10130f 100%);
+    color: var(--paper);
+    font-family: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    min-height:100vh;
+  }
+
+  .wrap{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 5vw 24px 80px;
+  }
+
+  header.masthead{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding: 18px 0 34px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 48px;
+  }
+
+  .brand{
+    font-family: "Futura","Century Gothic",Verdana,sans-serif;
+    letter-spacing: 0.02em;
+    font-size: 15px;
+    color: var(--gold);
+    text-decoration:none;
+    border-bottom: 1px solid transparent;
+  }
+  .brand:hover{ border-color: var(--gold); }
+
+  .locale{
+    font-family: "Futura","Century Gothic",Verdana,sans-serif;
+    font-size: 12px;
+    color: rgba(242,237,225,0.55);
+  }
+
+  h1.title{
+    font-size: clamp(48px, 9vw, 96px);
+    line-height: 0.92;
+    margin: 0 0 18px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    background: linear-gradient(100deg, var(--neon-pink) 0%, var(--gold) 45%, var(--neon-teal) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  p.dek{
+    font-size: 19px;
+    line-height: 1.55;
+    max-width: 56ch;
+    color: rgba(242,237,225,0.85);
+    margin: 0 0 44px;
+  }
+
+  p.dek a{
+    color: var(--neon-teal);
+  }
+
+  .clock{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 0 0 40px;
+  }
+
+  .cell{
+    border: 1px solid var(--line);
+    padding: 22px 8px 16px;
+    text-align:center;
+    position: relative;
+  }
+
+  .cell .num{
+    font-family: "Futura","Century Gothic",Verdana,sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-size: clamp(30px, 6vw, 52px);
+    color: var(--paper);
+    display:block;
+    line-height:1;
+  }
+
+  .cell .label{
+    font-family: "Futura","Century Gothic",Verdana,sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: rgba(242,237,225,0.5);
+    display:block;
+    margin-top: 10px;
+  }
+
+  .cell:nth-child(1) .num{ color: var(--neon-pink); }
+  .cell:nth-child(2) .num{ color: var(--gold); }
+  .cell:nth-child(3) .num{ color: var(--neon-teal); }
+  .cell:nth-child(4) .num{ color: #b98cf0; }
+
+  .target-date{
+    font-family:"Futura","Century Gothic",Verdana,sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: rgba(242,237,225,0.6);
+    margin: 0 0 56px;
+  }
+
+  .target-date strong{ color: var(--paper); font-weight: 400; }
+
+  .card{
+    border: 1px solid var(--line);
+    padding: 32px 30px;
+    margin-bottom: 22px;
+    background: rgba(242,237,225,0.03);
+  }
+
+  .card h2{
+    font-family: "Futura","Century Gothic",Verdana,sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    margin: 0 0 14px;
+    font-weight: 400;
+  }
+
+  .card p{
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0 0 14px;
+    color: rgba(242,237,225,0.88);
+  }
+  .card p:last-child{ margin-bottom: 0; }
+
+  .cta{
+    display:inline-block;
+    margin-top: 6px;
+    padding: 13px 26px;
+    background: var(--neon-pink);
+    color: #0e1210;
+    text-decoration:none;
+    font-family:"Futura","Century Gothic",Verdana,sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+  }
+  .cta:hover{ background: var(--gold); }
+
+  footer{
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-family:"Futura","Century Gothic",Verdana,sans-serif;
+    font-size: 12px;
+    color: rgba(242,237,225,0.45);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  footer a{ color: rgba(242,237,225,0.7); }
+
+  @media (max-width: 520px){
+    .clock{ grid-template-columns: repeat(2,1fr); }
+    header.masthead{ flex-direction:column; gap:6px; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <a class="brand" href="https://gtaupdateshub.com" target="_blank" rel="noopener">GTA UPDATES HUB</a>
+    <span class="locale">Vice City · 2026</span>
+  </header>
+
+  <h1 class="title">GTA VI is almost here</h1>
+  <p class="dek">
+    Rockstar's official launch date is locked for PlayStation 5 and Xbox Series X|S.
+    Track every day, hour, and minute until you're back in Leonida —
+    and get patch notes, trailers, and pre-order details at
+    <a href="https://gtaupdateshub.com" target="_blank" rel="noopener">gtaupdateshub.com</a>.
+  </p>
+
+  <div class="clock" id="clock">
+    <div class="cell"><span class="num" id="days">00</span><span class="label">DAYS</span></div>
+    <div class="cell"><span class="num" id="hours">00</span><span class="label">HOURS</span></div>
+    <div class="cell"><span class="num" id="minutes">00</span><span class="label">MINUTES</span></div>
+    <div class="cell"><span class="num" id="seconds">00</span><span class="label">SECONDS</span></div>
+  </div>
+
+  <p class="target-date">Release date: <strong>Thursday, November 19, 2026</strong> · PS5 &amp; Xbox Series X|S</p>
+
+  <div class="card">
+    <h2>ABOUT THIS COUNTDOWN</h2>
+    <p>
+      This page tracks the time remaining until Grand Theft Auto VI launches, using
+      Rockstar's confirmed release date. Digital preload and boxed copies become
+      available a week earlier, on November 12, 2026.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>WHERE TO GET THE FULL STORY</h2>
+    <p>
+      For everything else — trailer breakdowns, map leaks, pricing by region, and
+      day-one patch coverage when it drops — head over to GTA Updates Hub.
+    </p>
+    <a class="cta" href="https://gtaupdateshub.com" target="_blank" rel="noopener">Visit gtaupdateshub.com</a>
+  </div>
+
+  <footer>
+    <span>Not affiliated with Rockstar Games or Take-Two Interactive.</span>
+    <a href="https://gtaupdateshub.com" target="_blank" rel="noopener">gtaupdateshub.com</a>
+  </footer>
+
+</div>
+
+<script>
+  // GTA VI official release: November 19, 2026, 00:00 local time
+  var target = new Date("2026-11-19T00:00:00");
+
+  function pad(n){ return String(n).padStart(2,"0"); }
+
+  function tick(){
+    var now = new Date();
+    var diff = target - now;
+
+    if (diff <= 0){
+      document.getElementById("days").textContent = "00";
+      document.getElementById("hours").textContent = "00";
+      document.getElementById("minutes").textContent = "00";
+      document.getElementById("seconds").textContent = "00";
+      document.querySelector(".dek").textContent = "GTA VI is out now. Head to gtaupdateshub.com for launch coverage.";
+      clearInterval(timer);
+      return;
+    }
+
+    var d = Math.floor(diff / (1000*60*60*24));
+    var h = Math.floor((diff / (1000*60*60)) % 24);
+    var m = Math.floor((diff / (1000*60)) % 60);
+    var s = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("days").textContent = pad(d);
+    document.getElementById("hours").textContent = pad(h);
+    document.getElementById("minutes").textContent = pad(m);
+    document.getElementById("seconds").textContent = pad(s);
+  }
+
+  tick();
+  var timer = setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
